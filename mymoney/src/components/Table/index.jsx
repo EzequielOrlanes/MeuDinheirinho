@@ -3,7 +3,7 @@ import "./Table.css";
 export function Table() {
   return (
     <>
-      <div class="tabela">Testeeee</div>
+      <div className="tabela">Testeeee</div>
     </>
   );
 }
