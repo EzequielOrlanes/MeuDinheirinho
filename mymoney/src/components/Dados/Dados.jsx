@@ -1,4 +1,3 @@
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -7,14 +6,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 export function Dados() {
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(titulo, preço, categoria, data) {
+    return { titulo, preço, categoria, data };
   }
 
   const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
+    createData("Desenvolvimento de site", 159, 6.0, 24),
+    createData("Hamburguer ", 237, 9.0, 37),
+    createData("Aluguel do apartamento", 262, 16.0, 24),
+    createData("Computador", 262, 16.0, 24),
   ];
 
   return (
@@ -22,11 +22,22 @@ export function Dados() {
       <TableHead>
         {" "}
         <TableRow>
-          <TableCell>Dessert (100g serving)</TableCell>
-          <TableCell align="center">Calories</TableCell>
-          <TableCell align="right">Fat&nbsp;(g)</TableCell>
-          <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-          <TableCell align="right">Protein&nbsp;(g)</TableCell>
+          <TableCell>
+            {" "}
+            <strong> Titulo </strong>
+          </TableCell>
+          <TableCell>
+            {" "}
+            <strong> Preço</strong>
+          </TableCell>{" "}
+          <TableCell>
+            {" "}
+            <strong> Categoria </strong>
+          </TableCell>{" "}
+          <TableCell>
+            {" "}
+            <strong> Data </strong>
+          </TableCell>
         </TableRow>
       </TableHead>
 
@@ -34,12 +45,11 @@ export function Dados() {
         {rows.map((row) => (
           <TableRow key={row.name}>
             <TableCell component="th" scope="row">
-              {row.name}
+              {row.titulo}
             </TableCell>
-            <TableCell align="right">{row.calories}</TableCell>
-            <TableCell align="right">{row.fat}</TableCell>
-            <TableCell align="right">{row.carbs}</TableCell>
-            <TableCell align="right">{row.protein}</TableCell>
+            <TableCell align="right">{row.preço}</TableCell>
+            <TableCell align="right">{row.categoria}</TableCell>
+            <TableCell align="right">{row.data}</TableCell>
           </TableRow>
         ))}
       </TableBody>

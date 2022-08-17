@@ -20,7 +20,7 @@ export function Home() {
           </button>
         </div>
         <Cards />
-        <div className="novaTransacao">
+        <div className="tabela">
           <Dados />
         </div>
       </div>
