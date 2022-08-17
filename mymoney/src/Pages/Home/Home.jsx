@@ -1,9 +1,9 @@
-import "./Fundo.css";
-import { Cards } from "../Cards/index";
-import { Table } from "../Table/index";
+import "./Home.css";
 import { useState } from "react";
+import { Cards } from "../../components/Cards";
+import { Dados } from "../../components/Dados/Dados";
 
-export function Fundo() {
+export function Home() {
   const [transacao, setTransacao] = useState();
 
   function novaTransacao() {
@@ -20,8 +20,8 @@ export function Fundo() {
           </button>
         </div>
         <Cards />
-        <div className="conteudo">
-          <Table />
+        <div className="novaTransacao">
+          <Dados />
         </div>
       </div>
     </>

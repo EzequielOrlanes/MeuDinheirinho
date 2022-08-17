@@ -1,4 +1,3 @@
-import { Fundo } from "./components/Fundo";
 import { AppRoutes } from "./Routes";
 function App() {
   return (
