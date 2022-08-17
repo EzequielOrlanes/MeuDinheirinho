@@ -1,5 +1,4 @@
 .pagina {
-  /*grid-template-rows: 212vh 608vh;*/
   margin: 0;
   padding: 0;
   outline: 0;
@@ -12,14 +11,18 @@
   display: flex;
 }
 
-.conteudo {
+.main {
+  align-items: center;
+  justify-content: center;
   display: flex;
+  width: 900px;
+  height: 900px;
 }
 
 .pagina {
   background-color: rgb(238, 237, 237);
   width: 100%;
-  height: 608px;
+  height: 100%;
 }
 
 .novaTransacao {
@@ -32,6 +35,13 @@
   background-color: rgb(77, 248, 234);
 }
 
+.tabela {
+  width: 1216px;
+  height: 320px;
+  background-color: white;
+  margin: 80px;
+  margin-left: 160px;
+}
 .meuDinheirinho {
   margin-top: 32px;
   margin-left: 160px;
