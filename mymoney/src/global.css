@@ -10,3 +10,7 @@
     height: 100%;
   }
   
+Button{
+  display: flex;
+  align-items: center;
+}
