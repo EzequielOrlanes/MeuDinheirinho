@@ -1,0 +1,48 @@
+.pagina {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.header {
+  background-color: rgb(137, 223, 216);
+  height: 212px;
+  width: 100%;
+  display: flex;
+}
+
+.main {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 900px;
+  height: 900px;
+}
+
+.pagina {
+  background-color: rgb(238, 237, 237);
+  width: 100%;
+  height: 100%;
+}
+
+.novaTransacao {
+  height: 48px;
+  width: 195px !important;
+  margin-top: 32px;
+  margin-left: 925px;
+  margin-right: 160px;
+  border-radius: 5px;
+  background-color: rgb(77, 248, 234);
+}
+
+.tabela {
+  width: 1216px;
+  height: 320px;
+  background-color: white;
+  margin: 80px;
+  margin-left: 160px;
+}
+.meuDinheirinho {
+  margin-top: 32px;
+  margin-left: 160px;
+}
