@@ -5,4 +5,7 @@ export const Container = styled.div`
   display: flex;
   gap: 30px;
   margin-left: 160px;
+  height: 150px;
+  width: 100%;
+  background-color: red;
 `;
