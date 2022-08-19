@@ -2,6 +2,7 @@ import "./Home.css";
 import { useState } from "react";
 import { Cards } from "../../components/Cards";
 import { Dados } from "../../components/Dados/Dados";
+import { Form } from "../../components/Form/Form";
 
 export function Home() {
   const [transacao, setTransacao] = useState();
@@ -15,11 +16,10 @@ export function Home() {
       <div className="pagina">
         <div className="header">
           <div className="meuDinheirinho">Meu dinheirinho</div>
-          <button onClick={novaTransacao} className="novaTransacao">
-            Nova transação
-          </button>
+          <Form> </Form>
         </div>
         <Cards />
+
         <div className="tabela">
           <Dados />
         </div>
