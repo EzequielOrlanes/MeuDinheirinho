@@ -1,5 +1,5 @@
 import { Form } from './components/Form/form';
-import {Modal} from './components/Modal/Modal'
+
 
 
 function App() {
