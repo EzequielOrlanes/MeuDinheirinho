@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: -68px;
   display: flex;
-  gap: 30px;
-  margin-left: 160px;
-  height: 300px;
-  width: 300px;
-  background: red;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px 15px;
+  width: 25.6%;
+  height: 136px;
 
   @media (max-width: 750px) {
     width: 20%;
@@ -40,7 +41,8 @@ export const Header = styled.header`
 export const HeaderTitle = styled.p`
   font-size: 20px;
 `;
-export const Total = styled.spam`
+
+export const Total = styled.span`
   font-size: 30px;
   font-weight: bold;
 `;

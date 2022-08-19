@@ -16,7 +16,7 @@ export function Home() {
       <div className="pagina">
         <div className="header">
           <div className="meuDinheirinho">Meu dinheirinho</div>
-          <Form> </Form>
+          <Form></Form>
         </div>
         <Cards />
 

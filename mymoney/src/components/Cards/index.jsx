@@ -3,13 +3,18 @@
 // import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 
 import React from "react";
-// import { Celula } from "../Celula/Celula";
-import { Container } from "./Cards";
 
+import { Container } from "./Cards";
+import { Celula } from "../Celula";
 export function Cards() {
   return (
     <>
-      <Container> Oi </Container>
+      <Container>
+        {" "}
+        <Celula />
+        <Celula />
+        <Celula />
+      </Container>
     </>
   );
 }
