@@ -1,3 +1,3 @@
 export function Modal() {
-  return <h1> Olá</h1>;
+  return <h1> Aqui deve existir um modal</h1>;
 }

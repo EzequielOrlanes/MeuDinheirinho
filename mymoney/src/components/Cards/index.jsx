@@ -1,22 +1,19 @@
-import "./Cards.css";
-import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
-import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
-import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+// import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
+// import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
+// import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+
+import React from "react";
+import { Celula } from "../Celula/Celula";
+
+import { Container } from "./Cards";
 
 export function Cards() {
   return (
     <>
-      <div className="cartoes">
-        <div className="Entrada">
-          <ArrowDownwardRoundedIcon />
-        </div>
-        <div className="Saida">
-          <ArrowUpwardRoundedIcon />
-        </div>
-        <div className="Total">
-          <AttachMoneyRoundedIcon />
-        </div>
-      </div>
+      {" "}
+      <Container>
+        <Celula> Oi</Celula>
+      </Container>
     </>
   );
 }
