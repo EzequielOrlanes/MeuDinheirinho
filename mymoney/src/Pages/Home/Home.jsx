@@ -1,28 +1,49 @@
 import "./Home.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Cards } from "../../components/Cards";
 import { Dados } from "../../components/Dados/Dados";
-import { Form } from "../../components/Form/Form";
+import { Header } from "../../components/Header/header";
+import { Table } from "../../components/Table/Table";
 
 export function Home() {
-  const [transacao, setTransacao] = useState();
+  const data = localStorage.getItem("transacoes");
+  const [transacoes, setTransacoes] = useState(data ? JSON.parse(data) : []);
 
-  function novaTransacao() {
-    console.log("Abrir o modal aqui");
-  }
+  const [entrada, setEntrada] = useState(0);
+  const [saida, setSaida] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const somaSaida = transacoes
+      .filter((item) => item.saida)
+      .map((transaction) => Number(transaction.soma));
+
+    const somaEntrada = transacoes
+      .filter((item) => item.saida)
+      .map((transaction) => Number(transaction.soma));
+
+    const saida = somaSaida.reduce((acc, cur) => acc + cur, 0).toFixed(2);
+    const entrada = somaEntrada.reduce((acc, cur) => acc + cur, 0).toFixed(2);
+    const total = Math.abs(entrada - saida).toFixed(2);
+
+    setEntrada(`R$ ${entrada}`);
+    setSaida(`R$ ${saida}`);
+    setTotal(`${Number(entrada) < Number(saida) ? "-" : ""} R$ ${total}`);
+  }, [transacoes]);
+
+  const handleAdd = (transaction) => {
+    const newArrayTransacaoes = [...transacoes, transaction];
+    setTransacoes(newArrayTransacaoes);
+
+    localStorage.setItem("transasoes", JSON.stringify(newArrayTransacaoes));
+  };
 
   return (
     <>
       <div className="pagina">
-        <div className="header">
-          <div className="meuDinheirinho">Meu dinheirinho</div>
-          <Form></Form>
-        </div>
-        <Cards />
-
-        <div className="tabela">
-          <Dados />
-        </div>
+        <Header />
+        <Cards entrada={entrada} saida={saida} total={total} />
+        <Table> </Table>
       </div>
     </>
   );

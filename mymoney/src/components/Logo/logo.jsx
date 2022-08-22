@@ -1,8 +1,10 @@
 import React from "react";
+import { LLogo } from "./style";
+
 export function Logo() {
   return (
     <>
-      <div> My Little Money</div>
+      <LLogo> My little money</LLogo>
     </>
   );
 }

@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import "./form.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import { FForm } from "./style";
 
 export function Form() {
   const [state, setState] = React.useState({
@@ -149,18 +150,20 @@ export function Form() {
       </div>
     </Box>
   );
-
   return (
     <div>
       {["Nova transação"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button
-            onClick={toggleDrawer(anchor, true)}
-            variant="contained"
-            color="primary"
-          >
-            {anchor}
-          </Button>
+          <FForm>
+            <Button
+              onClick={toggleDrawer(anchor, true)}
+              variant="contained"
+              color="primary"
+              align-items="right"
+            >
+              {anchor}
+            </Button>
+          </FForm>
           <SwipeableDrawer
             class="modal"
             PaperProps={{

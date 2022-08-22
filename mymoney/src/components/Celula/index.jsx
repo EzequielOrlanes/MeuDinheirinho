@@ -1,14 +1,15 @@
 import React from "react";
 import { Header, HeaderTitle, Container, Total } from "./Celula";
 
-function Celula() {
+function Celula({ title, Icon, value }) {
   return (
     <>
       <Container>
         <Header>
-          <HeaderTitle>teste</HeaderTitle>
+          <HeaderTitle>{title} </HeaderTitle>
+          <Icon />
         </Header>
-        <Total> R$ 200.000</Total>
+        <Total> {value} </Total>
       </Container>
     </>
   );

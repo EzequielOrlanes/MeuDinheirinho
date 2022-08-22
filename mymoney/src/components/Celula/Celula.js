@@ -29,9 +29,10 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   gap: 10px;
+  margin: 20px;
 
   svg {
     width: 25px;
