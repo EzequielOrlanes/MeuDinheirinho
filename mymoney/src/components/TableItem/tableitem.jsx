@@ -9,6 +9,7 @@ export function TableItem({ item, onDelete }) {
         <Td>{item.preco}</Td>
         <Td>{item.categoria}</Td>
         <Td>{item.data}</Td>
+
         <Td>
           {" "}
           <Td alignCenter>

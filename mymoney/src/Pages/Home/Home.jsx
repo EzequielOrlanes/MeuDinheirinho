@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Cards } from "../../components/Cards";
 import { Dados } from "../../components/Dados/Dados";
 import { Header } from "../../components/Header/header";
-import { Table } from "../../components/Table/Table";
+// import { Table } from "../../components/Table/Table";
 
 export function Home() {
   const data = localStorage.getItem("transacoes");
@@ -40,11 +40,11 @@ export function Home() {
 
   return (
     <>
-      <div className="pagina">
-        <Header />
-        <Cards entrada={entrada} saida={saida} total={total} />
-        <Table> </Table>
-      </div>
+      {/* <div className="pagina"> */}
+      <Header />
+      <Cards entrada={entrada} saida={saida} total={total} />
+      {/* <Table> </Table> */}
+      {/* </div> */}
     </>
   );
 }

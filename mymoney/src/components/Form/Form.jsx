@@ -12,7 +12,6 @@ export function Form() {
     novaTransacao: false,
   });
 
-  const [value, setValue] = React.useState("Controlled");
   const [preço, setPreço] = React.useState("Preço");
   const [nome, setNome] = React.useState("Nome");
   const [categoria, setCategoria] = React.useState("Categoria");
@@ -24,15 +23,15 @@ export function Form() {
   };
 
   const handleNomeChange = (event) => {
-    setValue(event.target.nome);
+    setNome(event.target.value);
   };
 
   const handlePreçoChange = (event) => {
-    setValue(event.target.preço);
+    setPreço(event.target.value);
   };
 
   const handleCategoriaChange = (event) => {
-    setValue(event.target.categoria);
+    setCategoria(event.target.value);
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
