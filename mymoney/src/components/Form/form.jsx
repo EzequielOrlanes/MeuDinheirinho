@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import './form.css';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import styled, { useTheme } from "styled-components";
+import { useMediaQuery } from '@mui/material';
 
 
 export function Form() {
@@ -13,10 +15,12 @@ export function Form() {
     
   });
 
-  const [value, setValue] = React.useState('Controlled');
-  const [preço, setPreço] = React.useState('Preço');
-  const [nome, setNome] = React.useState('Nome');
-  const [categoria, setCategoria] = React.useState('Categoria');
+  const responsivo = useMediaQuery('(min-width:600px)');
+
+
+  const [preço, setPreço] = React.useState('');
+  const [nome, setNome] = React.useState('');
+  const [categoria, setCategoria] = React.useState('');
   const [pintaVerde, setPintaVerde] = React.useState(true);
   const [pintaVermelho, setPintaVermelho] = React.useState(false);
 
@@ -27,15 +31,16 @@ export function Form() {
   };
 
   const handleNomeChange = (event) => {
-    setValue(event.target.nome);
+    setNome(event.target.nome);
   };
 
   const handlePreçoChange = (event) => {
-    setValue(event.target.preço);
+    setPreço(event.target.preço);
+    console.log(preço);
   };
 
   const handleCategoriaChange = (event) => {
-    setValue(event.target.categoria);
+    setCategoria(event.target.categoria);
   };
 
 
@@ -53,8 +58,12 @@ export function Form() {
   };
 
   const envia = (anchor, open) => (event) => {
-    const dado = (nome,preço,categoria,"abcd");
+    const dado = (nome,preço,categoria,pintaVerde,"abcd");
     console.log(dado);
+    console.log(nome);
+    console.log(preço);
+    console.log(categoria);
+    console.log(pintaVerde);
     if (
       event &&
       event.type === 'keydown' &&
@@ -82,11 +91,11 @@ export function Form() {
       noValidate
       autoComplete="off"
     >
+      <form>
       <div>
         <TextField
           id="filled-nome"
           required
-          label="Nome"
           placeholder="Nome"
           onChange={handleNomeChange}
           multiline
@@ -97,21 +106,25 @@ export function Form() {
         <TextField
           id="filled-valor"
           required
-          label="Valor"
           placeholder="Valor"
-          onChange={handlePreçoChange}
+          value={preço}
+          onChange={(e) => setPreço(e.target.preço)}
           multiline
           variant="filled"
         />
       </div>
       <div>
-        <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction="row" style={{
+                                                    padding: '3%',
+                                                    width: '90%'
+        }}>
             <Button variant="contained"
                     onClick={()=> {
                         setPintaVerde(true);
                         setPintaVermelho(false);
                     }}
-                    style={{backgroundColor: pintaVerde?'rgba(0,255,0,0.6)':'rgb(200,200,200)'}}
+                    style={{backgroundColor: pintaVerde?'rgba(0,255,0,0.6)':'rgb(200,200,200)',
+                            width: '50%'}}
             >Entrada</Button>
                         
             <Button variant="contained"
@@ -119,7 +132,8 @@ export function Form() {
                         setPintaVerde(false);
                         setPintaVermelho(true);
                     }}
-                    style={{backgroundColor: pintaVermelho?'rgba(255,0,0,0.6)':'rgb(200,200,200)'}}    
+                    style={{backgroundColor: pintaVermelho?'rgba(255,0,0,0.6)':'rgb(200,200,200)',
+                            width: '50%'}}    
             >Saida</Button>
         </Stack>
       </div> 
@@ -127,18 +141,23 @@ export function Form() {
         <TextField
           id="filled-categoria"
           required
-          label="Categoria"
           placeholder="Categoria"
-          onChange={handleCategoriaChange}
           multiline
           variant="filled"
+          value={categoria}
+          onChange={(e) => setCategoria(e.target.categoria)}
         />
       </div>
+      </form>
     </Box>
-        <div class="botao">
+        <div class="botao" style={{ paddingLeft: '3%',
+                                    width: '90%'
+                                    }}>
           <Button onClick={envia(anchor, false)}
                   variant="contained"
                   color="primary"
+                  style={{width: '100%'}}
+                  type='submit'
                   
           >Pronto!</Button>
         </div>
@@ -147,21 +166,21 @@ export function Form() {
     </Box>
   );
 
-  
-
-
   return (
     <div>
       {['Nova transação'].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <React.Fragment key={responsivo ? 'left' : 'bottom'}>
           <Button onClick={toggleDrawer(anchor, true)} variant="contained" color="primary">{anchor}</Button>
           <SwipeableDrawer
             class="modal"
-            PaperProps={{sx: {
-                              width: '35%',
-                              backgroundColor: 'rgba(240,240,255,1)'
-            }}}             
-            anchor={anchor}
+            PaperProps={responsivo ? {sx: {
+              width: '35%',
+              backgroundColor: 'rgba(240,240,255,1)'
+}} : {sx: {
+  width: '100%',
+  backgroundColor: 'rgba(240,240,255,1)'
+}}}             
+            anchor={responsivo ? 'left' : 'bottom'}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
