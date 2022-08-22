@@ -9,7 +9,13 @@ function Celula({ title, Icon, value }) {
           <HeaderTitle>{title} </HeaderTitle>
           <Icon />
         </Header>
-        <Total> {value} </Total>
+        <Total>
+          {" "}
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(value)}{" "}
+        </Total>
       </Container>
     </>
   );

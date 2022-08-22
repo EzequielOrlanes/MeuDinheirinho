@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
@@ -7,18 +8,24 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useMediaQuery } from "@mui/material";
 
-export function Form() {
+export function Form({ novaListadeTransacoes, setNovaListadeTransacoes }) {
   const [state, setState] = React.useState({
     novaTransacao: false,
   });
 
   const responsivo = useMediaQuery("(min-width:600px)");
 
-  const [preço, setPreço] = React.useState("");
-  const [nome, setNome] = React.useState("");
-  const [categoria, setCategoria] = React.useState("");
-  const [pintaVerde, setPintaVerde] = React.useState(true);
-  const [pintaVermelho, setPintaVermelho] = React.useState(false);
+  const [preço, setPreço] = useState(0);
+  const [nome, setNome] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [pintaVerde, setPintaVerde] = useState(true);
+  const [pintaVermelho, setPintaVermelho] = useState(false);
+  const [isincome, setIsincome] = useState(true);
+
+  // function newTransacao() {
+  //   let novaTransacao = { nome, preço, categoria, isincome, date: new Date() };
+  //   setNovaListadeTransacoes([...novaListadeTransacoes, novaTransacao]);
+  // }
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -34,6 +41,10 @@ export function Form() {
 
   const envia = (anchor, open) => (event) => {
     const dado = [nome, preço, categoria, pintaVerde, "abcd"];
+
+    let novaTransacao = { nome, preço, categoria, isincome, date: new Date() };
+    setNovaListadeTransacoes([...novaListadeTransacoes, novaTransacao]);
+
     if (
       event &&
       event.type === "keydown" &&
@@ -73,7 +84,7 @@ export function Form() {
               required
               placeholder="Valor"
               value={preço}
-              onChange={(e) => setPreço(e.target.value)}
+              onChange={(e) => setPreço(Number(e.target.value))}
               multiline
               variant="filled"
             />
@@ -92,6 +103,7 @@ export function Form() {
                 onClick={() => {
                   setPintaVerde(true);
                   setPintaVermelho(false);
+                  setIsincome(true);
                 }}
                 style={{
                   backgroundColor: pintaVerde
@@ -102,12 +114,12 @@ export function Form() {
               >
                 Entrada
               </Button>
-
               <Button
                 variant="contained"
                 onClick={() => {
                   setPintaVerde(false);
                   setPintaVermelho(true);
+                  setIsincome(false);
                 }}
                 style={{
                   backgroundColor: pintaVermelho

@@ -3,11 +3,14 @@ import { Logo } from "../Logo/logo";
 import { Form } from "../Form/Form";
 import { HHeader } from "./style";
 
-export function Header() {
+export function Header({ novaListadeTransacoes, setNovaListadeTransacoes }) {
   return (
     <HHeader>
       <Logo />
-      <Form />
+      <Form
+        novaListadeTransacoes={novaListadeTransacoes}
+        setNovaListadeTransacoes={setNovaListadeTransacoes}
+      />
     </HHeader>
   );
 }

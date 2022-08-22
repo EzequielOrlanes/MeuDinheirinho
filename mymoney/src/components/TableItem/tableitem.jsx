@@ -1,7 +1,6 @@
 import React from "react";
 import { Td, Tr } from "./style";
-import { FaTrash } from "react-icons/fa";
-export function TableItem({ item, onDelete }) {
+export function TableItem({ item }) {
   return (
     <>
       <Tr>
@@ -9,13 +8,6 @@ export function TableItem({ item, onDelete }) {
         <Td>{item.preco}</Td>
         <Td>{item.categoria}</Td>
         <Td>{item.data}</Td>
-
-        <Td>
-          {" "}
-          <Td alignCenter>
-            <FaTrash onClick={() => onDelete(item.id)}></FaTrash>{" "}
-          </Td>
-        </Td>
       </Tr>
     </>
   );

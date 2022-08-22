@@ -7,12 +7,31 @@ import { Header } from "../../components/Header/header";
 
 export function Home() {
   const data = localStorage.getItem("transacoes");
-
+  const [novaListadeTransacoes, setNovaListadeTransacoes] = useState([]);
   const [transacoes, setTransacoes] = useState(data ? JSON.parse(data) : []);
-
   const [entrada, setEntrada] = useState(0);
   const [saida, setSaida] = useState(0);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    console.log(novaListadeTransacoes);
+  }, [novaListadeTransacoes]);
+
+  useEffect(() => {
+    let somaEntradas = 0;
+    let somaSaidas = 0;
+    for (let i = 0; i < novaListadeTransacoes.length; i++) {
+      if (novaListadeTransacoes[i].isincome == true) {
+        somaEntradas += novaListadeTransacoes[i].preço;
+      } else {
+        somaSaidas += novaListadeTransacoes[i].preço;
+      }
+    }
+    setSaida(somaSaidas);
+    setEntrada(somaEntradas);
+
+    setTotal(somaEntradas - somaSaidas);
+  }, [novaListadeTransacoes]);
 
   useEffect(() => {
     const somaSaida = transacoes
@@ -41,11 +60,18 @@ export function Home() {
 
   return (
     <>
-      {/* <div className="pagina"> */}
-      <Header />
+      <Header
+        novaListadeTransacoes={novaListadeTransacoes}
+        setNovaListadeTransacoes={setNovaListadeTransacoes}
+      />
       <Cards entrada={entrada} saida={saida} total={total} />
-      {/* <Table> </Table> */}
-      {/* </div> */}
+
+      {/* <Table
+        novaListadeTransacoes={novaListadeTransacoes}
+        setNovaListadeTransacoes={setNovaListadeTransacoes}
+      >
+        {" "}
+      </Table> */}
     </>
   );
 }
