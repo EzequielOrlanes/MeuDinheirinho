@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import './form.css';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import styled, { useTheme } from "styled-components";
 import { useMediaQuery } from '@mui/material';
 
 
@@ -31,16 +30,16 @@ export function Form() {
   };
 
   const handleNomeChange = (event) => {
-    setNome(event.target.nome);
+    setNome(event.target.value);
   };
 
   const handlePreçoChange = (event) => {
-    setPreço(event.target.preço);
+    setPreço(event.target.value);
     console.log(preço);
   };
 
   const handleCategoriaChange = (event) => {
-    setCategoria(event.target.categoria);
+    setCategoria(event.target.value);
   };
 
 
@@ -108,7 +107,7 @@ export function Form() {
           required
           placeholder="Valor"
           value={preço}
-          onChange={(e) => setPreço(e.target.preço)}
+          onChange={(e) => setPreço(e.target.value)}
           multiline
           variant="filled"
         />
@@ -145,7 +144,7 @@ export function Form() {
           multiline
           variant="filled"
           value={categoria}
-          onChange={(e) => setCategoria(e.target.categoria)}
+          onChange={(e) => setCategoria(e.target.value)}
         />
       </div>
       </form>
@@ -167,7 +166,9 @@ export function Form() {
   );
 
   return (
-    <div>
+    <div style={{paddingLeft: '70%',
+                 paddingTop: '4%'
+      }}>
       {['Nova transação'].map((anchor) => (
         <React.Fragment key={responsivo ? 'left' : 'bottom'}>
           <Button onClick={toggleDrawer(anchor, true)} variant="contained" color="primary">{anchor}</Button>
