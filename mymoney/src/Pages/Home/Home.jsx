@@ -7,6 +7,7 @@ import { Header } from "../../components/Header/header";
 
 export function Home() {
   const data = localStorage.getItem("transacoes");
+
   const [transacoes, setTransacoes] = useState(data ? JSON.parse(data) : []);
 
   const [entrada, setEntrada] = useState(0);

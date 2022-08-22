@@ -5,34 +5,20 @@ import Button from "@mui/material/Button";
 import "./form.css";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import { FForm } from "./style";
+import { useMediaQuery } from "@mui/material";
 
 export function Form() {
   const [state, setState] = React.useState({
     novaTransacao: false,
   });
 
-  const [preço, setPreço] = React.useState("Preço");
-  const [nome, setNome] = React.useState("Nome");
-  const [categoria, setCategoria] = React.useState("Categoria");
+  const responsivo = useMediaQuery("(min-width:600px)");
+
+  const [preço, setPreço] = React.useState("");
+  const [nome, setNome] = React.useState("");
+  const [categoria, setCategoria] = React.useState("");
   const [pintaVerde, setPintaVerde] = React.useState(true);
   const [pintaVermelho, setPintaVermelho] = React.useState(false);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleNomeChange = (event) => {
-    setNome(event.target.value);
-  };
-
-  const handlePreçoChange = (event) => {
-    setPreço(event.target.value);
-  };
-
-  const handleCategoriaChange = (event) => {
-    setCategoria(event.target.value);
-  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -47,8 +33,7 @@ export function Form() {
   };
 
   const envia = (anchor, open) => (event) => {
-    const dado = (nome, preço, categoria, "abcd");
-    console.log(dado);
+    const dado = [nome, preço, categoria, pintaVerde, "abcd"];
     if (
       event &&
       event.type === "keydown" &&
@@ -56,7 +41,7 @@ export function Form() {
     ) {
       return;
     }
-
+    /// const [item, setItem] =({nome, })
     setState({ ...state, [anchor]: open });
   };
 
@@ -71,107 +56,126 @@ export function Form() {
         noValidate
         autoComplete="off"
       >
-        <div>
-          <TextField
-            id="filled-nome"
-            required
-            label="Nome"
-            placeholder="Nome"
-            onChange={handleNomeChange}
-            multiline
-            variant="filled"
-          />
-        </div>
-        <div>
-          <TextField
-            id="filled-valor"
-            required
-            label="Valor"
-            placeholder="Valor"
-            onChange={handlePreçoChange}
-            multiline
-            variant="filled"
-          />
-        </div>
-        <div>
-          <Stack spacing={2} direction="row">
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPintaVerde(true);
-                setPintaVermelho(false);
-              }}
+        <form>
+          <div>
+            <TextField
+              id="filled-nome"
+              required
+              placeholder="Nome"
+              onChange={(e) => setNome(e.target.value)}
+              multiline
+              variant="filled"
+            />
+          </div>
+          <div>
+            <TextField
+              id="filled-valor"
+              required
+              placeholder="Valor"
+              value={preço}
+              onChange={(e) => setPreço(e.target.value)}
+              multiline
+              variant="filled"
+            />
+          </div>
+          <div>
+            <Stack
+              spacing={2}
+              direction="row"
               style={{
-                backgroundColor: pintaVerde
-                  ? "rgba(0,255,0,0.6)"
-                  : "rgb(200,200,200)",
+                padding: "3%",
+                width: "90%",
               }}
             >
-              Entrada
-            </Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setPintaVerde(true);
+                  setPintaVermelho(false);
+                }}
+                style={{
+                  backgroundColor: pintaVerde
+                    ? "rgba(0,255,0,0.6)"
+                    : "rgb(200,200,200)",
+                  width: "50%",
+                }}
+              >
+                Entrada
+              </Button>
 
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPintaVerde(false);
-                setPintaVermelho(true);
-              }}
-              style={{
-                backgroundColor: pintaVermelho
-                  ? "rgba(255,0,0,0.6)"
-                  : "rgb(200,200,200)",
-              }}
-            >
-              Saida
-            </Button>
-          </Stack>
-        </div>
-        <div>
-          <TextField
-            id="filled-categoria"
-            required
-            label="Categoria"
-            placeholder="Categoria"
-            onChange={handleCategoriaChange}
-            multiline
-            variant="filled"
-          />
-        </div>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setPintaVerde(false);
+                  setPintaVermelho(true);
+                }}
+                style={{
+                  backgroundColor: pintaVermelho
+                    ? "rgba(255,0,0,0.6)"
+                    : "rgb(200,200,200)",
+                  width: "50%",
+                }}
+              >
+                Saida
+              </Button>
+            </Stack>
+          </div>
+          <div>
+            <TextField
+              id="filled-categoria"
+              required
+              placeholder="Categoria"
+              multiline
+              variant="filled"
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+            />
+          </div>
+        </form>
       </Box>
-      <div class="botao">
+      <div class="botao" style={{ paddingLeft: "3%", width: "90%" }}>
         <Button
           onClick={envia(anchor, false)}
           variant="contained"
           color="primary"
+          style={{ width: "100%" }}
+          type="submit"
         >
           Pronto!
         </Button>
       </div>
     </Box>
   );
+
   return (
-    <div>
+    <div style={{ paddingLeft: "70%", paddingTop: "4%" }}>
       {["Nova transação"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <FForm>
-            <Button
-              onClick={toggleDrawer(anchor, true)}
-              variant="contained"
-              color="primary"
-              align-items="right"
-            >
-              {anchor}
-            </Button>
-          </FForm>
+        <React.Fragment key={responsivo ? "left" : "bottom"}>
+          <Button
+            onClick={toggleDrawer(anchor, true)}
+            variant="contained"
+            color="primary"
+          >
+            {anchor}
+          </Button>
           <SwipeableDrawer
             class="modal"
-            PaperProps={{
-              sx: {
-                width: "35%",
-                backgroundColor: "rgba(240,240,255,1)",
-              },
-            }}
-            anchor={anchor}
+            PaperProps={
+              responsivo
+                ? {
+                    sx: {
+                      width: "35%",
+                      backgroundColor: "rgba(240,240,255,1)",
+                    },
+                  }
+                : {
+                    sx: {
+                      width: "100%",
+                      backgroundColor: "rgba(240,240,255,1)",
+                    },
+                  }
+            }
+            anchor={responsivo ? "left" : "bottom"}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}

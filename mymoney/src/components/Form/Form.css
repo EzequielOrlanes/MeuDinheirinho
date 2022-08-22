@@ -6,6 +6,7 @@ h2 {
 
 div .botao {
   width: 400px;
+  justify-content: center;
 }
 
 .modal {
