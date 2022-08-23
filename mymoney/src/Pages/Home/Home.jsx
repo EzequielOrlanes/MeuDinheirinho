@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { Cards } from "../../components/Cards";
 import { Dados } from "../../components/Dados/Dados";
 import { Header } from "../../components/Header/header";
-import { Tabela } from "../../components/Tabela/Tabela";
-// import { Table } from "../../components/Table/Table";
 
 export function Home() {
   const data = localStorage.getItem("transacoes");

@@ -4,6 +4,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { padding } from "@mui/system";
 
 export function Dados({ novaListadeTransacoes }) {
   function createData(titulo, preço, categoria, data) {
@@ -20,24 +21,29 @@ export function Dados({ novaListadeTransacoes }) {
   return (
     <TableContainer
       component={Paper}
-      style={{ maxWidth: "88%", marginLeft: "83px", marginTop: "50px" }}
+      style={{
+        maxWidth: "88%",
+        marginLeft: "83px",
+        marginTop: "50px",
+        padding: "5px",
+      }}
     >
       <TableHead>
         {" "}
         <TableRow>
-          <TableCell style={{ width: "70%" }}>
+          <TableCell style={{ width: "80%" }}>
             {" "}
             <strong> Titulo </strong>
           </TableCell>
-          <TableCell>
+          <TableCell style={{ width: "10%" }}>
             {" "}
             <strong> Preço</strong>
           </TableCell>{" "}
-          <TableCell>
+          <TableCell style={{ width: "10%" }}>
             {" "}
             <strong> Categoria </strong>
           </TableCell>{" "}
-          <TableCell>
+          <TableCell style={{ width: "10%" }}>
             {" "}
             <strong> Data </strong>
           </TableCell>
