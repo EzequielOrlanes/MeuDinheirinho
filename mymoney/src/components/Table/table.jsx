@@ -1,10 +1,10 @@
-import { TTable, Thead, Tr, Th, Tbody } from "./style";
+import { Table, Thead, Tr, Th, Tbody } from "./style";
 // import { TableItem } from "../TableItem";
 
-export function Table({ novaListadeTransacoes }) {
+export function Table() {
   return (
     <>
-      <TTable>
+      <Table>
         <Thead>
           <Tr>
             <Th width={40}> Titulo </Th>
@@ -18,7 +18,7 @@ export function Table({ novaListadeTransacoes }) {
             <TableItem key={index} item={item} />
           ))} */}
         </Tbody>
-      </TTable>
+      </Table>
     </>
   );
 }

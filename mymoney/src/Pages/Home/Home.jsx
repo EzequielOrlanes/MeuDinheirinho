@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Cards } from "../../components/Cards";
 import { Dados } from "../../components/Dados/Dados";
 import { Header } from "../../components/Header/header";
+import { Tabela } from "../../components/Tabela/Tabela";
 // import { Table } from "../../components/Table/Table";
 
 export function Home() {
@@ -65,13 +66,7 @@ export function Home() {
         setNovaListadeTransacoes={setNovaListadeTransacoes}
       />
       <Cards entrada={entrada} saida={saida} total={total} />
-
-      {/* <Table
-        novaListadeTransacoes={novaListadeTransacoes}
-        setNovaListadeTransacoes={setNovaListadeTransacoes}
-      >
-        {" "}
-      </Table> */}
+      <Dados novaListadeTransacoes={novaListadeTransacoes}> </Dados>
     </>
   );
 }

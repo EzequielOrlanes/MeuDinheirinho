@@ -1,13 +1,13 @@
 import React from "react";
 import { Td, Tr } from "./style";
-export function TableItem({ item }) {
+export function TableItem() {
   return (
     <>
       <Tr>
-        <Td>{item.titulo}</Td>
-        <Td>{item.preco}</Td>
-        <Td>{item.categoria}</Td>
-        <Td>{item.data}</Td>
+        <Td>1</Td>
+        <Td>2</Td>
+        <Td> 3</Td>
+        <Td>4</Td>
       </Tr>
     </>
   );

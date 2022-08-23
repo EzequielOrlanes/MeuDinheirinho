@@ -15,7 +15,7 @@ export function Form({ novaListadeTransacoes, setNovaListadeTransacoes }) {
 
   const responsivo = useMediaQuery("(min-width:600px)");
 
-  const [preço, setPreço] = useState(0);
+  const [preço, setPreço] = useState();
   const [nome, setNome] = useState("");
   const [categoria, setCategoria] = useState("");
   const [pintaVerde, setPintaVerde] = useState(true);
@@ -52,7 +52,7 @@ export function Form({ novaListadeTransacoes, setNovaListadeTransacoes }) {
     ) {
       return;
     }
-    /// const [item, setItem] =({nome, })
+
     setState({ ...state, [anchor]: open });
   };
 
