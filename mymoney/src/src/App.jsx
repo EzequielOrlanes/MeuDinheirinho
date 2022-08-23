@@ -1,11 +1,8 @@
-import { Form } from './components/Form/form';
-
-
-
+import { AppRoutes } from "./Routes";
 function App() {
   return (
     <div className="App">
-      <Form />
+      <AppRoutes />
     </div>
   );
 }

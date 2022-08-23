@@ -1,22 +1,26 @@
-import "./Cards.css";
-import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
-import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
-import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+import React from "react";
+import {
+  FaDollarSign,
+  FaRegArrowAltCircleDown,
+  FaRegArrowAltCircleUp,
+} from "react-icons/fa";
 
-export function Cards() {
+import { Container } from "./Cards";
+import { Celula } from "../Celula";
+
+export function Cards({ entrada, saida, total }) {
   return (
     <>
-      <div className="cartoes">
-        <div className="Entrada">
-          <ArrowDownwardRoundedIcon />
-        </div>
-        <div className="Saida">
-          <ArrowUpwardRoundedIcon />
-        </div>
-        <div className="Total">
-          <AttachMoneyRoundedIcon />
-        </div>
-      </div>
+      <Container>
+        <Celula title="Entrada" Icon={FaRegArrowAltCircleUp} value={entrada} />{" "}
+        <Celula title="Saídas" Icon={FaRegArrowAltCircleDown} value={saida} />{" "}
+        <Celula
+          title="Total"
+          Icon={FaDollarSign}
+          value={total}
+          style="backgroundColor: green !important"
+        />{" "}
+      </Container>
     </>
   );
 }
